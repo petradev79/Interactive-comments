@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import AddComment from './components/AddComment';
+import Comment from './components/Comment';
+import DeleteModal from './components/DeleteModal';
+import { useStateContext } from './context/StateContext';
 
-function App() {
+const App = () => {
+  const { comments, showDeleteModal } = useStateContext();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div className='app grid-center'>
+        <div className='comments flex-center'>
+          {comments.map((comment) => (
+            <Comment key={comment.id} comment={comment} />
+          ))}
+        </div>
+        <AddComment type='new' />
+      </div>
+      {showDeleteModal && <DeleteModal />}
+    </>
   );
-}
+};
 
 export default App;

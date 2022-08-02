@@ -1,0 +1,53 @@
+@use 'variables' as *;
+@use 'utilities' as *;
+@use 'mixins' as *;
+
+.add-comment {
+  width: 100%;
+  max-width: 45rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background: $white;
+
+  grid-template-areas:
+    'input input'
+    'image actions';
+
+  @include respond() {
+    grid-template-columns: 2rem auto 1fr;
+    grid-template-areas:
+      'image input input actions'
+      '. input input .';
+  }
+
+  &__input {
+    grid-area: input;
+
+    padding: 1rem 1.5rem;
+    width: 100%;
+    font-size: 1rem;
+    color: $dark-blue;
+    border: 1px solid $light-gray;
+    border-radius: 0.5rem;
+    resize: none;
+
+    &:focus {
+      outline: 1.5px solid $grayish-blue;
+    }
+  }
+
+  &__img {
+    grid-area: image;
+    width: fit-content;
+
+    img {
+      width: 2rem;
+    }
+  }
+
+  &__actions {
+    grid-area: actions;
+
+    margin-left: auto;
+  }
+}

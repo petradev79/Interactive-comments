@@ -1,0 +1,65 @@
+@use 'variables' as *;
+@use 'utilities' as *;
+@use 'mixins' as *;
+
+.btn {
+  font-size: 1rem;
+  font-weight: $fw-500;
+  border: none;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: 0.7;
+  }
+
+  &--ghost {
+    --gap-space: 0.5rem;
+    color: $moderate-blue;
+    background: transparent;
+  }
+
+  &--ghost-danger {
+    --gap-space: 0.5rem;
+    color: $soft-red;
+    background: transparent;
+  }
+
+  &--full {
+    padding: 0.9rem 1.9rem;
+    text-transform: uppercase;
+    color: $white;
+    background: $moderate-blue;
+    border-radius: 0.6rem;
+  }
+
+  &--full-danger {
+    width: fit-content;
+    padding: 0.9rem 1.3rem;
+    text-transform: uppercase;
+    color: $white;
+    background: $soft-red;
+    border-radius: 0.6rem;
+
+    @include respond() {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &--full-info {
+    width: fit-content;
+    padding: 0.9rem 1.3rem;
+    text-transform: uppercase;
+    color: $white;
+    background: $grayish-blue;
+    border-radius: 0.6rem;
+
+    @include respond() {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

@@ -1,0 +1,106 @@
+@use 'variables' as *;
+@use 'utilities' as *;
+@use 'mixins' as *;
+
+.chat {
+  padding: 1rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  background: $white;
+
+  grid-template-areas:
+    'header header'
+    'content content'
+    'votes actions'
+    '. update';
+
+  @include respond() {
+    grid-template-columns: 2rem auto 1fr;
+    grid-template-areas:
+      'votes header actions'
+      'votes content content'
+      '. . update';
+  }
+
+  &__header {
+    grid-area: header;
+
+    img {
+      width: 2rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+      font-weight: $fw-700;
+      color: $dark-blue;
+    }
+
+    span {
+      margin-left: 4px;
+      padding: 2px 7px;
+      font-size: 0.8rem;
+      font-weight: $fw-400;
+      color: $white;
+      background: $moderate-blue;
+      border-radius: 2px;
+    }
+  }
+
+  &__content {
+    grid-area: content;
+
+    span {
+      font-weight: $fw-700;
+      color: $moderate-blue;
+    }
+  }
+
+  &__votes {
+    grid-area: votes;
+    --gap-space: 0.8rem;
+
+    width: fit-content;
+    padding: 0.5rem;
+    background: $very-light-gray;
+    border-radius: 10px;
+
+    @include respond() {
+      flex-direction: column;
+      padding: 0.7rem 0.25rem;
+      height: fit-content;
+    }
+  }
+
+  &__vote-btn {
+    width: 1.5rem;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    &:hover svg path {
+      fill: $moderate-blue;
+    }
+  }
+
+  &__score {
+    font-size: 1rem;
+    color: $moderate-blue;
+    font-weight: $fw-500;
+
+    @include respond() {
+      font-size: 0.9rem;
+    }
+  }
+
+  &__actions {
+    grid-area: actions;
+
+    margin-left: auto;
+  }
+
+  &__update {
+    grid-area: update;
+
+    margin-left: auto;
+  }
+}

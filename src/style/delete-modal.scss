@@ -1,0 +1,42 @@
+@use 'variables' as *;
+@use 'utilities' as *;
+@use 'mixins' as *;
+
+.delete-modal {
+  position: fixed;
+  z-index: 100;
+  inset: 0 0 0 0;
+  padding: 1rem;
+  background: rgba($black, 0.5);
+
+  &__box {
+    max-width: 25rem;
+    flex-direction: column;
+    background: $white;
+    padding: 1.4rem 1.65rem;
+    border-radius: 0.5rem;
+
+    @include respond() {
+      padding: 2rem;
+    }
+  }
+
+  &__title {
+    font-size: 1.3rem;
+    font-weight: $fw-500;
+    color: $dark-blue;
+
+    @include respond() {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__text {
+    line-height: 1.5;
+    color: $grayish-blue;
+  }
+
+  &__actions {
+    --gap-space: 0.7rem;
+  }
+}
